@@ -32,6 +32,12 @@ em nenhum tile do feed. A proposta inverte a hierarquia: a Salt passa a assinar 
 empreendimento (`Taboa · por Salt`), para que cada lançamento capitalize a construtora
 em vez de começar do zero.
 
+Com o Riviera Patacho entregue e vendido, ele deixa de ser oferta e vira **prova** —
+o único condomínio pé na areia concluído, ocupado e esgotado que a Salt pode mostrar.
+Daí o **selo de entrega**: o selo circular da marca com o ano e a praia gravados no
+anel, aplicado só em obra concluída. Enfileirados, os selos viram o currículo da
+construtora.
+
 ## Estrutura
 
 | Seção | Conteúdo |
@@ -58,15 +64,18 @@ em vez de começar do zero.
 - **v3** — símbolo com sol, mar, recife e areia; tipografia Jura.
 - **v4** — wordmark fechado em **Poiret One**, com uma versão obra de traço
   engrossado para chapa, bordado e leitura a distância.
+- **v5** — arquitetura de marca decidida e selo de entrega acrescentado.
 
 ## Decidido
 
 - **Wordmark**: Poiret One, em duas versões — fina (papel, tela, relevo seco) e
   obra (chapa vazada, bordado, capacete, uso abaixo de 15 mm).
+- **Arquitetura de marca**: *Salt assina o que está de pé, Salt nomeia o que ainda
+  vai subir.* Riviera Patacho (entregue e vendido) recebe endosso retroativo e sai
+  da comunicação de venda para o acervo; Taboa (em venda) recebe endosso a partir
+  de agora; o próximo lançamento nasce com marca única (`Salt <nome>`).
 
-## Aguardando decisão
-
-- **Arquitetura de marca**: endosso ou marca única (seção 02).
+## Aguardando
 - Grafia exata de "Riviera Patacho" — o letreiro aparece cortado no print.
 - Fotos das obras prontas e dos detalhes materiais, para substituir os blocos de cor
   nas simulações da seção 11.
