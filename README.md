@@ -41,7 +41,7 @@ em vez de começar do zero.
 | 03 | A ideia: a linha d'água |
 | 04 | O símbolo — leitura, versões, usos proibidos |
 | 05 | Assinatura e endosso |
-| 06 | Tipografia — inclui a escolha do wordmark entre quatro opções |
+| 06 | Tipografia — Poiret One e a versão obra |
 | 07 | Paleta |
 | 08 | Ripado, foto e render |
 | 09 | A grade do Instagram |
@@ -56,11 +56,16 @@ em vez de começar do zero.
 - **v2** (`Linha d'Água`) — refeita sobre prints reais do perfil. Símbolo abstrato de
   faixas horizontais e tipografia Young Serif, ambos recusados.
 - **v3** — símbolo com sol, mar, recife e areia; tipografia Jura.
+- **v4** — wordmark fechado em **Poiret One**, com uma versão obra de traço
+  engrossado para chapa, bordado e leitura a distância.
+
+## Decidido
+
+- **Wordmark**: Poiret One, em duas versões — fina (papel, tela, relevo seco) e
+  obra (chapa vazada, bordado, capacete, uso abaixo de 15 mm).
 
 ## Aguardando decisão
 
-- **Wordmark**: quatro opções na seção 06 (Jura Light recomendada, Outfit,
-  Poiret One, Instrument Serif). Trocar a escolhida altera só wordmark e títulos.
 - **Arquitetura de marca**: endosso ou marca única (seção 02).
 - Grafia exata de "Riviera Patacho" — o letreiro aparece cortado no print.
 - Fotos das obras prontas e dos detalhes materiais, para substituir os blocos de cor

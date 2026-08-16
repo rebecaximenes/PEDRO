@@ -6,7 +6,7 @@
   --cal:#E7E4DB; --superficie:#F1EFE8; --piche:#181410; --pedra:#6E6A61;
   --regua:#CFCABD; --mata:#1E4034; --acento:#1E4034; --palha:#B99354;
   --agua:#7FC5C0; --sol:#E0A542;
-  --f-display:"Jura",system-ui,sans-serif;
+  --f-display:"Poiret One","Century Gothic",sans-serif;
   --f-corpo:"Work Sans",system-ui,sans-serif;
   --f-dado:"DM Mono",ui-monospace,monospace;
 }
@@ -34,8 +34,8 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
 .secao:first-of-type{border-top:0}
 .cabeca{display:flex; flex-direction:column; gap:12px; margin-bottom:38px; max-width:78ch}
 .cabeca .n{font-family:var(--f-dado); font-size:11px; letter-spacing:.22em; color:var(--acento)}
-.cabeca h2{font-family:var(--f-display); font-weight:500; font-size:clamp(29px,4.7vw,45px);
-  line-height:1.12}
+.cabeca h2{font-family:var(--f-display); font-weight:400; font-size:clamp(32px,5.1vw,51px);
+  line-height:1.1; letter-spacing:.015em}
 .cabeca .sub{font-size:16.5px; color:var(--pedra); max-width:62ch}
 .pilha{display:flex; flex-direction:column; gap:26px}
 .texto{max-width:66ch}
@@ -50,7 +50,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
 .capa-in{position:relative; max-width:1180px; margin:0 auto; padding:74px 30px 54px;
   display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px}
 .marca-capa{width:min(232px,52vw)}
-.wordmark{font-family:var(--f-display); font-weight:300; text-transform:uppercase; line-height:1;
+.wordmark{font-family:var(--f-display); font-weight:400; text-transform:uppercase; line-height:1;
   font-size:clamp(54px,14vw,132px); letter-spacing:.30em; text-indent:.30em}
 .descritor{font-family:var(--f-dado); font-size:clamp(9px,1.6vw,11.5px); letter-spacing:.34em;
   text-transform:uppercase; color:var(--pedra); text-indent:.34em; margin-top:16px}
@@ -109,7 +109,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
 
 .lock{display:flex; align-items:center; gap:22px}
 .lock .lt{display:flex; flex-direction:column; gap:7px}
-.lock .ln{font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:31px;
+.lock .ln{font-family:var(--f-display); font-weight:400; text-transform:uppercase; font-size:31px;
   line-height:1; letter-spacing:.3em; text-indent:.3em}
 .lock .ld{font-family:var(--f-dado); font-size:7.5px; letter-spacing:.28em; text-transform:uppercase;
   color:var(--pedra); text-indent:.28em}
@@ -132,13 +132,19 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
 
 /* ---------- tipografia ---------- */
 .espec{background:var(--superficie); padding:26px; display:flex; flex-direction:column; gap:16px}
-.t-d{font-family:var(--f-display); font-weight:300; font-size:clamp(28px,5.2vw,46px); line-height:1.16}
+.t-d{font-family:var(--f-display); font-weight:400; font-size:clamp(31px,5.7vw,52px); line-height:1.14; letter-spacing:.015em}
 .t-c{font-family:var(--f-corpo); font-size:18.5px; line-height:1.62}
 .t-m{font-family:var(--f-dado); font-size:15px; letter-spacing:.04em}
 .espec .meta{display:flex; flex-wrap:wrap; gap:6px 22px; border-top:1.5px dashed var(--regua); padding-top:14px}
 .espec .meta span{font-family:var(--f-dado); font-size:10.5px; letter-spacing:.11em;
   text-transform:uppercase; color:var(--pedra)}
 
+.obra{-webkit-text-stroke:.055em currentColor; paint-order:stroke fill}
+.par-obra{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px}
+.par-obra>div{background:var(--cal); padding:30px 20px; display:flex; flex-direction:column;
+  align-items:center; gap:18px; text-align:center}
+.par-obra .wm{font-family:var(--f-display); text-transform:uppercase; font-size:clamp(34px,6vw,46px);
+  line-height:1; letter-spacing:.3em; text-indent:.3em}
 .opcoes{display:grid; grid-template-columns:repeat(auto-fit,minmax(238px,1fr)); gap:16px}
 .op{background:var(--superficie); padding:32px 22px 20px; display:flex; flex-direction:column;
   align-items:center; gap:20px; text-align:center; position:relative}
@@ -188,7 +194,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
   border-top:1px solid #3A342A; padding-top:18px}
 .portaria .por{font-family:var(--f-dado); font-size:9px; letter-spacing:.24em;
   text-transform:uppercase; color:#9A9488}
-.portaria .nm{font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:23px;
+.portaria .nm{font-family:var(--f-display); font-weight:400; text-transform:uppercase; font-size:23px;
   letter-spacing:.3em; text-indent:.3em}
 
 .cartao{aspect-ratio:85/55; padding:20px; display:flex; flex-direction:column; justify-content:space-between}
@@ -255,7 +261,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
       <div><b>Projeto</b><span>Linha d'Água — identidade visual</span></div>
       <div><b>Cliente</b><span>Salt Construtora Boutique</span></div>
       <div><b>Praça</b><span>São Miguel dos Milagres / Patacho — AL</span></div>
-      <div><b>Versão</b><span>v3 &middot; novo símbolo e nova tipografia</span></div>
+      <div><b>Versão</b><span>v4 &middot; wordmark em Poiret One</span></div>
     </div>
   </div>
 </header>
@@ -473,7 +479,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
 
       <div class="vitrine" style="padding:46px 18px">
         <div style="display:flex; flex-direction:column; align-items:center; gap:16px">
-          <div style="font-family:var(--f-display); font-weight:300; font-size:34px; letter-spacing:.16em; text-indent:.16em">TABOA</div>
+          <div style="font-family:var(--f-display); font-weight:400; font-size:34px; letter-spacing:.16em; text-indent:.16em">TABOA</div>
           <svg viewBox="0 0 140 12" width="152" height="13" aria-hidden="true">
             <path d="M2 6H138" stroke="var(--acento)" stroke-width="5" stroke-dasharray="12 10" fill="none"/>
           </svg>
@@ -486,7 +492,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
                 <path class="rec" d="M4 90H124" stroke-width="7" stroke-dasharray="12 10"/>
               </g>
             </svg>
-            <span style="font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:17px; letter-spacing:.3em; text-indent:.3em">Salt</span>
+            <span style="font-family:var(--f-display); font-weight:400; text-transform:uppercase; font-size:17px; letter-spacing:.3em; text-indent:.3em">Salt</span>
           </div>
         </div>
         <figcaption>Endosso — a régua de recife separa o produto de quem assina</figcaption>
@@ -505,37 +511,56 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
     <div class="cabeca">
       <div class="n">06</div>
       <h2>Tipografia</h2>
-      <p class="sub">Fora a serifada pesada da versão anterior. Entra letra larga, clara e de traço fino — que acompanha o símbolo horizontal e o gosto que o logotipo do Taboa já demonstra.</p>
+      <p class="sub">Wordmark fechado em <b>Poiret One</b>. Geométrica, art déco, de traço fino e construída sobre o círculo — a mesma figura do sol do símbolo.</p>
     </div>
     <div class="pilha">
 
       <div class="bloco" style="gap:22px">
-        <div class="rot">Escolha do wordmark — quatro opções reais, para você apontar uma</div>
+        <div class="rot">Escolha do wordmark — decidida</div>
         <div class="opcoes">
-          <div class="op rec">
-            <span class="tag">recomendada</span>
+          <div class="op">
             <div class="sm sm-jura">Salt</div>
-            <div class="cap"><b>Jura Light</b><span>Larga, aberta e calma. Tem peso Medium para placa e tamanho pequeno — a única das quatro que aguenta obra e papel com a mesma família.</span></div>
+            <div class="cap"><b>Jura Light</b><span>Larga e aberta, com peso Medium disponível. Era a recomendação técnica.</span></div>
           </div>
           <div class="op">
             <div class="sm sm-outfit">Salt</div>
             <div class="cap"><b>Outfit</b><span>Geométrica e neutra. A mais segura e a mais legível de longe; em compensação, a menos memorável.</span></div>
           </div>
-          <div class="op">
+          <div class="op rec">
+            <span class="tag">escolhida</span>
             <div class="sm sm-poiret">Salt</div>
-            <div class="cap"><b>Poiret One</b><span>A mais elegante das quatro e a mais próxima do logotipo do Taboa. Fina demais para placa de obra e capacete.</span></div>
+            <div class="cap"><b>Poiret One</b><span>A mais elegante das quatro e a mais próxima do logotipo do Taboa. Peso único e traço fino — resolvido pela versão obra, abaixo.</span></div>
           </div>
           <div class="op">
             <div class="sm sm-instr">Salt</div>
             <div class="cap"><b>Instrument Serif</b><span>Se você quiser manter serifa: alto contraste, editorial, muito mais leve que a anterior.</span></div>
           </div>
         </div>
-        <p class="mini">O documento inteiro está montado em Jura. Se você apontar outra, eu troco e republico — muda só o wordmark e os títulos; símbolo, paleta e sistema ficam.</p>
+        <p class="mini">O documento inteiro está remontado em Poiret One. As outras três ficam registradas aqui só como histórico da decisão.</p>
+      </div>
+
+      <div class="bloco" style="gap:20px">
+        <div class="rot">Versão obra — a contrapartida do traço fino</div>
+        <p class="texto" style="font-size:15.5px">Poiret One tem um peso só, e ele é fino. Em papel, em tela e em fachada com boa iluminação isso é exatamente o que dá elegância à marca. Em <b>chapa vazada, bordado de camisa, capacete, adesivo de caçamba e placa vista de longe</b>, um traço desses some ou quebra.</p>
+        <p class="texto" style="font-size:15.5px">A solução é a de sempre em identidade: o wordmark é <b>vetorizado uma vez e o traço engrossado</b> à mão, mantendo largura, entreletra e desenho das letras. Vira um arquivo fixo — ninguém redigita, ninguém escolhe peso. Duas versões, uma regra:</p>
+        <div class="par-obra">
+          <div>
+            <div class="wm">Salt</div>
+            <div class="cap"><b style="font-family:var(--f-dado);font-size:10px;letter-spacing:.15em">Versão fina</b>
+            <span style="font-size:13px;color:var(--pedra);display:block;margin-top:4px">Papel, tela, apresentação, fachada iluminada, relevo seco.</span></div>
+          </div>
+          <div>
+            <div class="wm obra">Salt</div>
+            <div class="cap"><b style="font-family:var(--f-dado);font-size:10px;letter-spacing:.15em">Versão obra</b>
+            <span style="font-size:13px;color:var(--pedra);display:block;margin-top:4px">Chapa vazada, bordado, capacete, tapume, adesivo, qualquer uso abaixo de 15&nbsp;mm.</span></div>
+          </div>
+        </div>
+        <p class="mini">A régua prática: se a peça for lida a mais de três metros de distância, ou se o traço for virar buraco em material físico, usa a versão obra. Nas outras, a fina.</p>
       </div>
 
       <div class="espec">
         <div class="t-d">Vinte e quatro casas. Uma praia com Bandeira Azul.</div>
-        <div class="meta"><span>Jura</span><span>Títulos e nome</span><span>Light no wordmark, Medium nos títulos</span><span>Entreletra do wordmark: 0,30em</span></div>
+        <div class="meta"><span>Poiret One</span><span>Títulos e nome</span><span>Peso único &mdash; mais a versão obra vetorizada</span><span>Entreletra do wordmark: 0,30em</span></div>
       </div>
       <div class="espec">
         <div class="t-c">A casa fica a 40 metros da linha d'água. A mata continua atrás dela. Foi assim que a gente desenhou, e foi assim que a gente construiu.</div>
@@ -694,11 +719,11 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
                 </g>
               </svg>
               <span class="por">construção e incorporação</span>
-              <span class="nm">Salt</span>
+              <span class="nm obra">Salt</span>
             </div>
           </div>
         </div>
-        <p class="mini" style="margin-top:11px">Sem render na placa, sem “breve lançamento”. Concreto aparente, letras vazadas em chapa e o ripado como textura — os mesmos materiais da obra atrás dela.</p>
+        <p class="mini" style="margin-top:11px">Sem render na placa, sem “breve lançamento”. Concreto aparente, letras vazadas em chapa e o ripado como textura — os mesmos materiais da obra atrás dela. O wordmark aqui é a <b>versão obra</b>: é chapa, e é lido de longe.</p>
       </div>
 
       <div>
@@ -720,7 +745,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
             </div>
           </div>
           <div class="cartao cv" style="justify-content:center; align-items:center; text-align:center; gap:10px">
-            <div style="font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:26px; letter-spacing:.3em; text-indent:.3em">Salt</div>
+            <div style="font-family:var(--f-display); font-weight:400; text-transform:uppercase; font-size:26px; letter-spacing:.3em; text-indent:.3em">Salt</div>
             <div class="cv-c" style="letter-spacing:.26em">Construtora</div>
             <div class="cv-t">São Miguel dos Milagres &middot; Patacho<br>Escritório: Ponta Verde, Maceió</div>
           </div>
@@ -739,8 +764,8 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
     </div>
     <div class="pilha">
       <div class="fases">
-        <div class="fase"><div class="q">Agora</div><div><h4>Apontar o wordmark e fechar a seção 02</h4><p>Uma fonte entre as quatro, e endosso ou marca única. São as duas coisas que travam o resto — a segunda depende de onde o Riviera Patacho está no funil de vendas, não de gosto.</p></div></div>
-        <div class="fase"><div class="q">Semana 1–2</div><div><h4>Marca e assinaturas fechadas</h4><p>Símbolo, wordmark, selo, bloco de endosso para Taboa e Riviera Patacho, arquivos em SVG, PDF e PNG, e um manual curto de 8 páginas que a equipe consiga usar sozinha.</p></div></div>
+        <div class="fase"><div class="q">Agora</div><div><h4>Fechar a seção 02</h4><p>Endosso ou marca única. Com o wordmark decidido, é a última coisa que trava o resto — e depende de onde o Riviera Patacho está no funil de vendas, não de gosto.</p></div></div>
+        <div class="fase"><div class="q">Semana 1–2</div><div><h4>Marca e assinaturas fechadas</h4><p>Símbolo, wordmark nas duas versões (fina e obra), selo, bloco de endosso para Taboa e Riviera Patacho, arquivos em SVG, PDF e PNG, e um manual curto de 8 páginas que a equipe consiga usar sozinha.</p></div></div>
         <div class="fase"><div class="q">Semana 3–5</div><div><h4>Perfil e banco de conteúdo</h4><p>Avatar, destaques, bio, capas e 15 posts na grade da seção 09 — incluindo o Bandeira Azul refeito. Sessão de fotos das casas prontas e dos detalhes materiais: é o ativo que está faltando e é barato de produzir.</p></div></div>
         <div class="fase"><div class="q">Mês 2–3</div><div><h4>Campo e negócio</h4><p>Portaria, placa de obra, tapume, uniforme, apresentação de vendas, papelaria, e-mail e site de uma página com as obras entregues.</p></div></div>
         <div class="fase"><div class="q">Mês 3</div><div><h4>Registrar</h4><p>Marca mista no INPI (classe 37 construção, classe 36 incorporação), domínio e padronização da grafia nos portais de imóveis — para nenhum outro “Salt” aparecer na frente de vocês.</p></div></div>
@@ -758,7 +783,7 @@ p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{displa
           <path d="M4 100H124" stroke-width="3"/>
         </g>
       </svg>
-      <div class="lt"><div class="ln" style="font-size:26px">Salt</div><div class="ld">Linha d'Água &middot; v3</div></div>
+      <div class="lt"><div class="ln" style="font-size:26px">Salt</div><div class="ld">Linha d'Água &middot; v4</div></div>
     </div>
     <p>Proposta de identidade visual para discussão. Diagnóstico feito sobre prints do perfil @salt.cb enviados pelo cliente em ago/2026; dados cadastrais apurados em registros públicos. “Riviera Patacho” aparece parcialmente cortado no print e precisa ser confirmado.</p>
   </footer>
