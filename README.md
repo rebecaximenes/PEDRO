@@ -5,18 +5,23 @@ Proposta de nova identidade visual para a **Salt Construtora e Incorporadora**
 de Alagoas — São Miguel dos Milagres e Praia do Patacho.
 Instagram: [@salt.cb](https://www.instagram.com/salt.cb).
 
-## Arquivo
+## Arquivos
 
 - `salt-identidade.html` — apresentação completa. Página única, autocontida
   (fontes embutidas em base64, sem dependência de rede). Abre em qualquer navegador.
+- `src.html` — fonte editável, com o placeholder `/*FONTS*/` no lugar do base64.
+- `build.py` — injeta as fontes em `src.html` e gera o HTML final.
 
 ## Conceito
 
 A linha de recifes que corre paralela à praia é o que transforma o mar em piscina
-e o que dá ao Patacho o selo Bandeira Azul. Vista da varanda, a paisagem é um
-**corte**: horizonte, recife, água rasa, arrebentação, areia — e a casa.
-O símbolo é esse corte reduzido a quatro linhas e um bloco, com a linha do recife
-tracejada. O tracejado vira a régua de toda a identidade.
+e o que dá ao Patacho o selo Bandeira Azul. Da varanda de qualquer casa, a paisagem
+empilha **sol, mar, recife e areia** — que é também, sem forçar, um *corte* de terreno.
+
+O símbolo é essa paisagem em quatro elementos: o sol (o único redondo, o que faz ler
+"praia" de imediato), a linha cheia do horizonte, a **linha tracejada do recife** e a
+linha fina da areia. O tracejado é o que impede o símbolo de virar pôr do sol genérico,
+e vira a régua de toda a identidade.
 
 Plataforma verbal: **"Pé na areia não é slogan. É uma cota de projeto."**
 
@@ -36,8 +41,8 @@ em vez de começar do zero.
 | 03 | A ideia: a linha d'água |
 | 04 | O símbolo — leitura, versões, usos proibidos |
 | 05 | Assinatura e endosso |
-| 06 | Paleta |
-| 07 | Tipografia |
+| 06 | Tipografia — inclui a escolha do wordmark entre quatro opções |
+| 07 | Paleta |
 | 08 | Ripado, foto e render |
 | 09 | A grade do Instagram |
 | 10 | Tom de voz |
@@ -46,12 +51,17 @@ em vez de começar do zero.
 
 ## Histórico
 
-A v1 (`Projeto Cristal`) partia da premissa errada de que a construtora atuava na orla
-vertical de Maceió e foi descartada. Esta v2 foi refeita sobre prints reais do perfil
-enviados pelo cliente.
+- **v1** (`Projeto Cristal`) — partia da premissa errada de que a construtora atuava
+  na orla vertical de Maceió. Descartada.
+- **v2** (`Linha d'Água`) — refeita sobre prints reais do perfil. Símbolo abstrato de
+  faixas horizontais e tipografia Young Serif, ambos recusados.
+- **v3** — símbolo com sol, mar, recife e areia; tipografia Jura.
 
-## A confirmar
+## Aguardando decisão
 
+- **Wordmark**: quatro opções na seção 06 (Jura Light recomendada, Outfit,
+  Poiret One, Instrument Serif). Trocar a escolhida altera só wordmark e títulos.
+- **Arquitetura de marca**: endosso ou marca única (seção 02).
 - Grafia exata de "Riviera Patacho" — o letreiro aparece cortado no print.
 - Fotos das obras prontas e dos detalhes materiais, para substituir os blocos de cor
   nas simulações da seção 11.

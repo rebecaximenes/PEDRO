@@ -1,0 +1,767 @@
+<title>Salt Linha d'Água</title>
+<style>
+/*FONTS*/
+
+:root{
+  --cal:#E7E4DB; --superficie:#F1EFE8; --piche:#181410; --pedra:#6E6A61;
+  --regua:#CFCABD; --mata:#1E4034; --acento:#1E4034; --palha:#B99354;
+  --agua:#7FC5C0; --sol:#E0A542;
+  --f-display:"Jura",system-ui,sans-serif;
+  --f-corpo:"Work Sans",system-ui,sans-serif;
+  --f-dado:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --cal:#15130F; --superficie:#1E1B15; --piche:#EDE9DF; --pedra:#9A9488;
+    --regua:#332E25; --mata:#8FD0C4; --acento:#8FD0C4; --palha:#D2AC71;
+    --agua:#7FC5C0; --sol:#EBBC6A;
+  }
+}
+:root[data-theme="dark"]{
+  --cal:#15130F; --superficie:#1E1B15; --piche:#EDE9DF; --pedra:#9A9488;
+  --regua:#332E25; --mata:#8FD0C4; --acento:#8FD0C4; --palha:#D2AC71;
+  --agua:#7FC5C0; --sol:#EBBC6A;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--cal); color:var(--piche);
+  font-family:var(--f-corpo); font-size:16.5px; line-height:1.66; -webkit-font-smoothing:antialiased}
+p{margin:0} h1,h2,h3,h4{margin:0; font-weight:400; text-wrap:balance} svg{display:block}
+
+.faixa{max-width:1180px; margin:0 auto; padding:0 30px}
+.secao{padding:70px 0 10px; border-top:1.5px dashed var(--regua)}
+.secao:first-of-type{border-top:0}
+.cabeca{display:flex; flex-direction:column; gap:12px; margin-bottom:38px; max-width:78ch}
+.cabeca .n{font-family:var(--f-dado); font-size:11px; letter-spacing:.22em; color:var(--acento)}
+.cabeca h2{font-family:var(--f-display); font-weight:500; font-size:clamp(29px,4.7vw,45px);
+  line-height:1.12}
+.cabeca .sub{font-size:16.5px; color:var(--pedra); max-width:62ch}
+.pilha{display:flex; flex-direction:column; gap:26px}
+.texto{max-width:66ch}
+.rot{font-family:var(--f-dado); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--pedra)}
+.mini{font-size:14px; color:var(--pedra); max-width:64ch}
+.fim{height:80px}
+
+/* ---------- capa ---------- */
+.capa{position:relative; border-bottom:1.5px dashed var(--regua); overflow:hidden}
+.estratos{position:absolute; inset:0; pointer-events:none; display:flex; flex-direction:column}
+.estratos i{display:block; width:100%}
+.capa-in{position:relative; max-width:1180px; margin:0 auto; padding:74px 30px 54px;
+  display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px}
+.marca-capa{width:min(232px,52vw)}
+.wordmark{font-family:var(--f-display); font-weight:300; text-transform:uppercase; line-height:1;
+  font-size:clamp(54px,14vw,132px); letter-spacing:.30em; text-indent:.30em}
+.descritor{font-family:var(--f-dado); font-size:clamp(9px,1.6vw,11.5px); letter-spacing:.34em;
+  text-transform:uppercase; color:var(--pedra); text-indent:.34em; margin-top:16px}
+.tese{font-family:var(--f-display); font-weight:400; font-size:clamp(20px,3.2vw,30px);
+  line-height:1.34; max-width:21ch; color:var(--acento)}
+.ficha{width:100%; border-top:1.5px dashed var(--regua); padding-top:18px; text-align:left;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:18px 26px}
+.ficha div{display:flex; flex-direction:column; gap:3px}
+.ficha b{font-family:var(--f-dado); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--pedra); font-weight:400}
+.ficha span{font-size:14px}
+
+/* ---------- blocos ---------- */
+.bloco{background:var(--superficie); padding:24px 26px; display:flex; flex-direction:column; gap:12px}
+.g2{display:grid; grid-template-columns:repeat(auto-fit,minmax(272px,1fr)); gap:16px}
+.g3{display:grid; grid-template-columns:repeat(auto-fit,minmax(196px,1fr)); gap:16px}
+.destaque{background:var(--mata); color:var(--cal); padding:30px 32px; display:flex;
+  flex-direction:column; gap:14px}
+.destaque .rot{color:var(--cal); opacity:.72}
+.destaque p{font-size:17px; max-width:62ch}
+.destaque .grande{font-family:var(--f-display); font-weight:400; font-size:clamp(21px,3.2vw,30px);
+  line-height:1.3; max-width:23ch}
+
+.achados{display:flex; flex-direction:column}
+.achado{display:grid; grid-template-columns:34px 1fr; gap:18px; padding:18px 0;
+  border-bottom:1.5px dashed var(--regua); align-items:start}
+.achado:first-child{border-top:1.5px dashed var(--regua)}
+.achado .k{font-family:var(--f-dado); font-size:11.5px; color:var(--acento); padding-top:.3em}
+.achado b{display:block; margin-bottom:3px; font-weight:600; font-size:16.5px}
+.achado span{color:var(--pedra); font-size:15.5px}
+
+.rolagem{overflow-x:auto}
+.tab{width:100%; border-collapse:collapse; font-size:14.5px; min-width:460px}
+.tab th,.tab td{text-align:left; padding:12px 16px 12px 0; border-bottom:1.5px dashed var(--regua); vertical-align:top}
+.tab th{font-family:var(--f-dado); font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--pedra); font-weight:400}
+.tab td.mono{font-family:var(--f-dado); font-variant-numeric:tabular-nums}
+
+/* ---------- símbolo ---------- */
+.vitrine{background:var(--superficie); display:grid; place-items:center; gap:16px; padding:34px 18px; min-height:200px}
+.vitrine figcaption{font-family:var(--f-dado); font-size:10px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--pedra); text-align:center; max-width:27ch; line-height:1.6}
+.m{fill:none; stroke:var(--piche); stroke-linecap:butt}
+.m .rec{stroke:var(--acento)}
+.m .cheio{fill:var(--piche); stroke:none}
+.guia{stroke:var(--acento); stroke-width:.6; opacity:.4; fill:none}
+
+@media (prefers-reduced-motion:no-preference){
+  .marca-capa .an{opacity:0; animation:surge .95s cubic-bezier(.2,.7,.2,1) forwards}
+  .marca-capa .an:nth-child(1){animation-delay:.1s}
+  .marca-capa .an:nth-child(2){animation-delay:.34s}
+  .marca-capa .an:nth-child(3){animation-delay:.5s}
+  .marca-capa .an:nth-child(4){animation-delay:.62s}
+}
+@keyframes surge{from{opacity:0; transform:translateY(9px)} to{opacity:1; transform:none}}
+
+.lock{display:flex; align-items:center; gap:22px}
+.lock .lt{display:flex; flex-direction:column; gap:7px}
+.lock .ln{font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:31px;
+  line-height:1; letter-spacing:.3em; text-indent:.3em}
+.lock .ld{font-family:var(--f-dado); font-size:7.5px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--pedra); text-indent:.28em}
+.lock-v{flex-direction:column; gap:18px; text-align:center}
+.lock-v .lt{align-items:center}
+
+.nao{position:relative; background:var(--superficie); padding:22px; display:grid; place-items:center;
+  gap:12px; min-height:158px}
+.nao::after{content:"×"; position:absolute; top:6px; right:12px; font-size:19px; color:#A6402D; line-height:1}
+.nao figcaption{font-size:12.5px; color:var(--pedra); text-align:center; line-height:1.45}
+
+/* ---------- paleta ---------- */
+.amostras{display:grid; grid-template-columns:repeat(auto-fit,minmax(146px,1fr)); gap:14px}
+.am{display:flex; flex-direction:column}
+.am .chip{height:104px}
+.am .inf{padding:12px 0 0; display:flex; flex-direction:column; gap:2px}
+.am .nm{font-size:14.5px; font-weight:600}
+.am .hx{font-family:var(--f-dado); font-size:11px; color:var(--pedra)}
+.am .us{font-size:12.5px; color:var(--pedra); line-height:1.42; margin-top:5px}
+
+/* ---------- tipografia ---------- */
+.espec{background:var(--superficie); padding:26px; display:flex; flex-direction:column; gap:16px}
+.t-d{font-family:var(--f-display); font-weight:300; font-size:clamp(28px,5.2vw,46px); line-height:1.16}
+.t-c{font-family:var(--f-corpo); font-size:18.5px; line-height:1.62}
+.t-m{font-family:var(--f-dado); font-size:15px; letter-spacing:.04em}
+.espec .meta{display:flex; flex-wrap:wrap; gap:6px 22px; border-top:1.5px dashed var(--regua); padding-top:14px}
+.espec .meta span{font-family:var(--f-dado); font-size:10.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--pedra)}
+
+.opcoes{display:grid; grid-template-columns:repeat(auto-fit,minmax(238px,1fr)); gap:16px}
+.op{background:var(--superficie); padding:32px 22px 20px; display:flex; flex-direction:column;
+  align-items:center; gap:20px; text-align:center; position:relative}
+.op.rec{outline:2px solid var(--acento); outline-offset:-2px}
+.op .tag{position:absolute; top:0; left:0; background:var(--acento); color:var(--cal);
+  font-family:var(--f-dado); font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; padding:5px 10px}
+.op .sm{text-transform:uppercase; line-height:1; font-size:clamp(32px,5.6vw,44px); color:var(--piche)}
+.op .cap{display:flex; flex-direction:column; gap:4px}
+.op .cap b{font-family:var(--f-dado); font-size:10px; letter-spacing:.15em; text-transform:uppercase;
+  font-weight:400}
+.op .cap span{font-size:13px; color:var(--pedra); line-height:1.5}
+.sm-jura{font-family:"Jura",sans-serif; font-weight:300; letter-spacing:.3em; text-indent:.3em}
+.sm-outfit{font-family:"Outfit",sans-serif; font-weight:400; letter-spacing:.28em; text-indent:.28em}
+.sm-poiret{font-family:"Poiret One",sans-serif; letter-spacing:.3em; text-indent:.3em}
+.sm-instr{font-family:"Instrument Serif",serif; letter-spacing:.22em; text-indent:.22em}
+
+/* ---------- ripado ---------- */
+.ripado{height:148px; position:relative; overflow:hidden; background:var(--superficie)}
+.ripado::before{content:""; position:absolute; inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 13px,var(--palha) 13px 17px); opacity:.5}
+
+/* ---------- grade ---------- */
+.grade{display:grid; grid-template-columns:repeat(3,1fr); gap:4px; max-width:432px;
+  padding:4px; background:var(--regua)}
+.tile{aspect-ratio:1; display:grid; place-items:center; padding:12px; text-align:center;
+  position:relative; overflow:hidden}
+.tl{position:absolute; left:9px; bottom:8px; font-family:var(--f-dado); font-size:6.5px;
+  letter-spacing:.2em; text-transform:uppercase}
+.t-obra{background:linear-gradient(160deg,#4A4034,#241E17)}
+.t-mata{background:linear-gradient(150deg,#2E5F3E,#16301F)}
+.t-agua{background:linear-gradient(180deg,#8FD3CD,#2F8C86)}
+.t-cal{background:#E7E4DB}
+.t-mar{background:#1E4034}
+.t-pedra{background:linear-gradient(140deg,#9A9186,#5E5850)}
+.frase{font-family:var(--f-display); font-weight:400; font-size:15.5px; line-height:1.3}
+.cl{color:#E7E4DB} .es{color:#181410} .vd{color:#1E4034}
+
+/* ---------- aplicações ---------- */
+.portaria{background:#181410; color:#E7E4DB; padding:30px; position:relative; overflow:hidden}
+.portaria .rip{position:absolute; inset:0; opacity:.15;
+  background:repeating-linear-gradient(90deg,transparent 0 11px,#B99354 11px 14px)}
+.portaria .in{position:relative; display:flex; flex-direction:column; gap:22px}
+.portaria .proj{font-family:var(--f-display); font-weight:400; font-size:clamp(25px,4.8vw,40px);
+  line-height:1.1; letter-spacing:.05em}
+.portaria .end{font-family:var(--f-dado); font-size:12px; letter-spacing:.12em; color:#9A9488}
+.portaria .assin{display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  border-top:1px solid #3A342A; padding-top:18px}
+.portaria .por{font-family:var(--f-dado); font-size:9px; letter-spacing:.24em;
+  text-transform:uppercase; color:#9A9488}
+.portaria .nm{font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:23px;
+  letter-spacing:.3em; text-indent:.3em}
+
+.cartao{aspect-ratio:85/55; padding:20px; display:flex; flex-direction:column; justify-content:space-between}
+.cf{background:#E7E4DB; color:#181410}
+.cv{background:#1E4034; color:#E7E4DB}
+.cv-n{font-size:14px; font-weight:600}
+.cv-c{font-family:var(--f-dado); font-size:9px; letter-spacing:.15em; text-transform:uppercase; opacity:.7}
+.cv-t{font-family:var(--f-dado); font-size:9.5px; line-height:1.75; opacity:.85}
+
+/* ---------- voz ---------- */
+.voz{display:grid; grid-template-columns:repeat(auto-fit,minmax(262px,1fr)); gap:16px}
+.voz-c{background:var(--superficie); padding:24px}
+.voz-c h4{font-family:var(--f-dado); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase;
+  margin-bottom:16px}
+.voz-sim h4{color:var(--acento)} .voz-nao h4{color:#A6402D}
+.voz-c ul{margin:0; padding-left:17px; display:flex; flex-direction:column; gap:10px}
+.voz-c li{font-size:15px; color:var(--pedra)}
+.voz-c li b{color:var(--piche); font-weight:600}
+
+.cit{font-family:var(--f-display); font-weight:400; font-size:clamp(20px,3.1vw,28px); line-height:1.36;
+  max-width:25ch; padding-left:22px; border-left:4px solid var(--acento)}
+
+.fases{display:flex; flex-direction:column}
+.fase{display:grid; grid-template-columns:118px 1fr; gap:22px; padding:20px 0;
+  border-bottom:1.5px dashed var(--regua)}
+.fase:first-child{border-top:1.5px dashed var(--regua)}
+@media (max-width:600px){.fase{grid-template-columns:1fr; gap:6px}}
+.fase .q{font-family:var(--f-dado); font-size:11px; letter-spacing:.1em; color:var(--acento)}
+.fase h4{font-size:16.5px; font-weight:600; margin-bottom:5px}
+.fase p{font-size:14.5px; color:var(--pedra); max-width:62ch}
+
+.rodape{border-top:1.5px dashed var(--regua); margin-top:56px; padding:32px 0 64px;
+  display:flex; flex-wrap:wrap; gap:22px; justify-content:space-between; align-items:flex-end}
+.rodape p{font-family:var(--f-dado); font-size:11px; line-height:1.75; color:var(--pedra); max-width:54ch}
+</style>
+
+<header class="capa">
+  <div class="estratos" aria-hidden="true">
+    <i style="height:30%;background:var(--cal)"></i>
+    <i style="height:10%;background:color-mix(in srgb,var(--sol) 15%,var(--cal))"></i>
+    <i style="height:16%;background:color-mix(in srgb,var(--agua) 28%,var(--cal))"></i>
+    <i style="height:14%;background:color-mix(in srgb,var(--agua) 48%,var(--cal))"></i>
+    <i style="flex:1;background:color-mix(in srgb,var(--palha) 24%,var(--cal))"></i>
+  </div>
+  <div class="capa-in">
+
+    <svg class="marca-capa" viewBox="0 0 128 108" role="img" aria-label="Símbolo Salt: o sol sobre o horizonte, a linha tracejada do recife e a faixa de areia">
+      <g class="m">
+        <circle class="an" cx="64" cy="34" r="26" stroke-width="5.5"/>
+        <path class="an" d="M4 70H124" stroke-width="8"/>
+        <path class="an rec" d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+        <path class="an" d="M4 100H124" stroke-width="3"/>
+      </g>
+    </svg>
+
+    <div>
+      <div class="wordmark">Salt</div>
+      <div class="descritor">Construtora &middot; Rota Ecológica &middot; Alagoas</div>
+    </div>
+
+    <p class="tese">Pé na areia não é slogan. É uma cota de projeto.</p>
+
+    <div class="ficha">
+      <div><b>Projeto</b><span>Linha d'Água — identidade visual</span></div>
+      <div><b>Cliente</b><span>Salt Construtora Boutique</span></div>
+      <div><b>Praça</b><span>São Miguel dos Milagres / Patacho — AL</span></div>
+      <div><b>Versão</b><span>v3 &middot; novo símbolo e nova tipografia</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="faixa">
+
+  <!-- 01 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">01</div>
+      <h2>O que o feed está dizendo hoje</h2>
+      <p class="sub">Diagnóstico feito em cima dos prints do @salt.cb que você mandou. É um perfil com material bom demais para o resultado que ele entrega.</p>
+    </div>
+    <div class="pilha">
+      <div class="achados">
+        <div class="achado"><div class="k">01</div><div><b>A Salt não aparece em lugar nenhum.</b><span>Percorri a grade inteira e não achei um único tile com a marca da construtora. O que aparece são <em>Taboa</em> (logotipo fino com manuscrito embaixo) e <em>Riviera Patacho</em> no letreiro da portaria. Quem passa pelo perfil sai sabendo o nome dos condomínios e não sabendo quem construiu.</span></div></div>
+        <div class="achado"><div class="k">02</div><div><b>Render demais, obra de menos.</b><span>A maior parte da grade é render — e as fotos da casa pronta, com a palha, o ripado, o muro de pedra e a cerca de mourão, são visivelmente <b>melhores</b> que os renders. Render vende planta; foto de obra pronta vende construtora. Vocês têm a segunda e estão usando a primeira.</span></div></div>
+        <div class="achado"><div class="k">03</div><div><b>Os posts de textura são a única coisa com voz própria.</b><span>As fotos de folha de coqueiro e do muro de pedra são o melhor conteúdo do perfil: silenciosas, materiais, e não parecem de imobiliária. É aí que a identidade nova se agarra — isso já é a marca, só não foi reconhecido como tal.</span></div></div>
+        <div class="achado"><div class="k">04</div><div><b>Bandeira Azul virou post de marcador.</b><span>O Patacho ter selo internacional Bandeira Azul é o argumento mais forte que uma construtora pé na areia pode ter na Rota Ecológica — e ele está num card com letra desenhada à mão, no meio de renders. Isso é ativo de marca sendo tratado como recado.</span></div></div>
+        <div class="achado"><div class="k">05</div><div><b>Três padrões visuais brigando.</b><span>Render saturado, foto real de luz suave e letra manuscrita, misturados na mesma grade. De longe o perfil não parece uma empresa — parece três.</span></div></div>
+      </div>
+      <p class="cit">O problema não é a marca ser feia. É a marca não estar lá.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">02</div>
+      <h2>A decisão que vem antes do desenho</h2>
+      <p class="sub">Antes de escolher símbolo e letra, é preciso decidir de quem é a marca. Hoje cada empreendimento tem a sua, e a Salt paga a conta de todas sem receber nada de volta.</p>
+    </div>
+    <div class="pilha">
+      <p class="texto">Toda mídia que vocês fazem hoje constrói <strong>Taboa</strong> e <strong>Riviera Patacho</strong> — nomes que, quando o condomínio vende, deixam de ser úteis. No lançamento seguinte, começa tudo do zero. É o modelo mais caro que existe, e é o padrão do mercado imobiliário justamente porque ninguém pensa nele.</p>
+      <p class="texto">Numa praça pequena e de boca a boca como a Rota Ecológica, onde o comprador é o mesmo perfil de gente que já esteve na região várias vezes, <strong>quem constrói vale mais que o nome do condomínio.</strong></p>
+
+      <div class="destaque">
+        <div class="rot">Arquitetura de marca — recomendada</div>
+        <p class="grande">Salt assina. O empreendimento é o produto.</p>
+        <p>A Salt vira endosso fixo em todo material: no letreiro da portaria, no rodapé de todo post, na placa de obra, no contrato. O empreendimento mantém o nome próprio, mas nunca aparece sozinho — sempre <b>“Taboa &nbsp;·&nbsp; por Salt”</b>.</p>
+      </div>
+
+      <div class="rolagem">
+        <table class="tab">
+          <thead><tr><th>Modelo</th><th>Como fica</th><th>O que acontece em 5 anos</th></tr></thead>
+          <tbody>
+            <tr><td><b>Endosso</b> — recomendado</td><td class="mono">Taboa · por Salt<br>Riviera Patacho · por Salt</td><td>Cada lançamento capitaliza a Salt. O quarto projeto vende mais fácil que o primeiro.</td></tr>
+            <tr><td><b>Marca única</b></td><td class="mono">Salt Taboa<br>Salt Patacho</td><td>Mais forte ainda, mas exige renomear o que já está em campanha. Vale se o Riviera Patacho ainda não lançou.</td></tr>
+            <tr><td><b>Marcas soltas</b> — atual</td><td class="mono">Taboa<br>Riviera Patacho</td><td>Onze anos e a construtora continua desconhecida fora do próprio cliente.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mini">Nota: há empreendimentos chamados “Salt” em Maceió atribuídos a outras construtoras nas buscas. Fixar o endosso e registrar a marca também resolve isso.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">03</div>
+      <h2>A ideia: sol, mar e recife</h2>
+      <p class="sub">A paisagem que se vê da varanda de qualquer casa de vocês, reduzida a quatro linhas.</p>
+    </div>
+    <div class="pilha">
+      <p class="texto">O que faz o Patacho ser o Patacho não é só a areia — é a <strong>linha de recifes</strong> correndo paralela à praia. Ela quebra o mar aberto e transforma tudo que fica entre ela e a areia em piscina: água rasa, morna, sem onda. É por isso que existe Rota Ecológica, é por isso que o Patacho tem <strong>Bandeira Azul</strong>, e é por isso que uma casa ali vale o que vale.</p>
+      <p class="texto">Some a isso o que o cliente olha toda manhã e toda tarde: <strong>o sol no horizonte</strong>. Sol, mar, recife, areia. Empilhados, são exatamente a paisagem — e são também, sem forçar, um <strong>corte</strong>: o desenho que um arquiteto faz do terreno em relação ao mar.</p>
+
+      <div class="g3">
+        <div class="bloco"><div class="rot">Sol</div><p style="font-size:15px">O único elemento redondo. É o que faz o símbolo ser lido como praia à distância de um scroll, sem precisar de palmeira nem de onda.</p></div>
+        <div class="bloco"><div class="rot">Mar e recife</div><p style="font-size:15px">A linha cheia é o horizonte; a tracejada é o recife. O tracejado é o que torna o símbolo <em>desta</em> praia e não de qualquer uma.</p></div>
+        <div class="bloco"><div class="rot">Areia</div><p style="font-size:15px">A linha fina de baixo. É onde a casa fica — e é a cota que dá nome à plataforma verbal.</p></div>
+      </div>
+
+      <p class="texto">Plataforma verbal: <strong>“Pé na areia não é slogan. É uma cota de projeto.”</strong> — diz em uma frase que a Salt é construtora, não corretora, e que a distância até a água é um número, não uma promessa.</p>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">04</div>
+      <h2>O símbolo</h2>
+      <p class="sub">Sol, horizonte, recife e areia. Lê-se “praia” em meio segundo — e o tracejado impede que vire o pôr do sol genérico que todo mundo usa.</p>
+    </div>
+    <div class="pilha">
+      <div class="g2">
+        <figure class="vitrine" style="margin:0">
+          <svg viewBox="0 0 128 108" width="196" height="165" aria-label="Leitura do símbolo">
+            <g class="m">
+              <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+              <path d="M4 70H124" stroke-width="8"/>
+              <path class="rec" d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+              <path d="M4 100H124" stroke-width="3"/>
+            </g>
+            <g class="guia" stroke-dasharray="2 3"><path d="M64 4V104"/><path d="M4 34H124"/></g>
+          </svg>
+          <figcaption>Sol &middot; horizonte &middot; recife &middot; areia — o sol centrado, as linhas correndo até a borda</figcaption>
+        </figure>
+        <figure class="vitrine" style="margin:0">
+          <svg viewBox="0 0 128 108" width="196" height="165" aria-label="Marca principal">
+            <g class="m">
+              <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+              <path d="M4 70H124" stroke-width="8"/>
+              <path class="rec" d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+              <path d="M4 100H124" stroke-width="3"/>
+            </g>
+          </svg>
+          <figcaption>Marca principal — traço, para fundo claro e sobre foto</figcaption>
+        </figure>
+        <figure class="vitrine" style="margin:0">
+          <svg viewBox="0 0 128 108" width="196" height="165" aria-label="Versão de sol cheio">
+            <g class="m">
+              <circle class="cheio" cx="64" cy="34" r="26"/>
+              <path d="M4 70H124" stroke-width="8"/>
+              <path class="rec" d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+              <path d="M4 100H124" stroke-width="3"/>
+            </g>
+          </svg>
+          <figcaption>Sol cheio — bordado, gravação, relevo e tamanhos pequenos</figcaption>
+        </figure>
+        <figure class="vitrine" style="margin:0">
+          <svg viewBox="0 0 128 128" width="158" height="158" aria-label="Selo circular">
+            <circle cx="64" cy="64" r="58" fill="none" stroke="var(--piche)" stroke-width="2.5"/>
+            <g class="m">
+              <circle class="cheio" cx="64" cy="48" r="16"/>
+              <path d="M20 76H108" stroke-width="6.5"/>
+              <path class="rec" d="M16 91H112" stroke-width="5.5" stroke-dasharray="10 8"/>
+              <path d="M22 103H106" stroke-width="2.5"/>
+            </g>
+          </svg>
+          <figcaption>Selo — avatar do perfil, carimbo, relevo em madeira</figcaption>
+        </figure>
+      </div>
+
+      <p class="texto">Três coisas que ele resolve de uma vez: é <strong>horizontal</strong>, então convive com foto sem brigar e não parece torre; é <strong>só círculo e reta</strong>, então sai em corte a laser, vinil, chapa vazada e gravação em madeira sem perder nada; e funciona <strong>em uma cor só sobre foto</strong>, que é como ele vai viver a maior parte do tempo.</p>
+
+      <div class="g3">
+        <div class="nao">
+          <svg viewBox="0 0 128 108" width="106" height="90" aria-hidden="true">
+            <g class="m">
+              <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+              <path d="M18 70H110" stroke-width="8"/>
+              <path class="rec" d="M18 87H110" stroke-width="6.5" stroke-dasharray="12 10"/>
+              <path d="M18 100H110" stroke-width="3"/>
+            </g>
+          </svg>
+          <figcaption>Não encurtar as linhas até a largura do sol. O horizonte não termina.</figcaption>
+        </div>
+        <div class="nao">
+          <svg viewBox="0 0 128 108" width="106" height="90" aria-hidden="true">
+            <g class="m">
+              <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+              <path d="M4 70H124" stroke-width="8"/>
+              <path d="M4 87H124" stroke-width="6.5"/>
+              <path d="M4 100H124" stroke-width="3"/>
+            </g>
+          </svg>
+          <figcaption>Não fechar o tracejado. Sem o recife, vira pôr do sol de agência de viagem.</figcaption>
+        </div>
+        <div class="nao">
+          <svg viewBox="0 0 128 108" width="106" height="90" aria-hidden="true">
+            <g class="m">
+              <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+              <path d="M4 70H124" stroke-width="8"/>
+              <path class="rec" d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+              <path d="M4 100H124" stroke-width="3"/>
+              <path d="M64 8V1 M40 13L35 7 M88 13L93 7" stroke-width="4"/>
+            </g>
+          </svg>
+          <figcaption>Não acrescentar raios, palmeira, gaivota ou onda. O sol é liso.</figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">05</div>
+      <h2>Assinatura e endosso</h2>
+      <p class="sub">Como o símbolo e o nome se juntam — e como cada empreendimento passa a ser carimbado. O terceiro bloco é o que resolve a seção 02, e é o mais usado dos três.</p>
+    </div>
+    <div class="pilha">
+      <div class="g2">
+        <div class="vitrine">
+          <div class="lock lock-v">
+            <svg viewBox="0 0 128 108" width="104" height="88" aria-hidden="true">
+              <g class="m">
+                <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+                <path d="M4 70H124" stroke-width="8"/>
+                <path class="rec" d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+                <path d="M4 100H124" stroke-width="3"/>
+              </g>
+            </svg>
+            <div class="lt"><div class="ln">Salt</div><div class="ld">Construtora &middot; Alagoas</div></div>
+          </div>
+          <figcaption>Institucional vertical — uso preferencial</figcaption>
+        </div>
+        <div class="vitrine">
+          <div class="lock">
+            <svg viewBox="0 0 128 128" width="62" height="62" aria-hidden="true">
+              <circle cx="64" cy="64" r="58" fill="none" stroke="var(--piche)" stroke-width="3"/>
+              <g class="m">
+                <circle class="cheio" cx="64" cy="48" r="16"/>
+                <path d="M20 76H108" stroke-width="6.5"/>
+                <path class="rec" d="M16 91H112" stroke-width="5.5" stroke-dasharray="10 8"/>
+                <path d="M22 103H106" stroke-width="2.5"/>
+              </g>
+            </svg>
+            <div class="lt"><div class="ln" style="font-size:27px">Salt</div><div class="ld">Construtora</div></div>
+          </div>
+          <figcaption>Horizontal com selo — rodapé, e-mail, faixas estreitas</figcaption>
+        </div>
+      </div>
+
+      <div class="vitrine" style="padding:46px 18px">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:16px">
+          <div style="font-family:var(--f-display); font-weight:300; font-size:34px; letter-spacing:.16em; text-indent:.16em">TABOA</div>
+          <svg viewBox="0 0 140 12" width="152" height="13" aria-hidden="true">
+            <path d="M2 6H138" stroke="var(--acento)" stroke-width="5" stroke-dasharray="12 10" fill="none"/>
+          </svg>
+          <div style="display:flex; align-items:center; gap:11px">
+            <span class="rot" style="font-size:8px; letter-spacing:.24em">por</span>
+            <svg viewBox="0 0 128 95" width="27" height="20" aria-hidden="true">
+              <g class="m">
+                <circle class="cheio" cx="64" cy="34" r="26"/>
+                <path d="M4 72H124" stroke-width="9"/>
+                <path class="rec" d="M4 90H124" stroke-width="7" stroke-dasharray="12 10"/>
+              </g>
+            </svg>
+            <span style="font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:17px; letter-spacing:.3em; text-indent:.3em">Salt</span>
+          </div>
+        </div>
+        <figcaption>Endosso — a régua de recife separa o produto de quem assina</figcaption>
+      </div>
+
+      <div class="achados">
+        <div class="achado"><div class="k">01</div><div><b>Nenhum empreendimento aparece sem o endosso.</b><span>Nem em post, nem em placa, nem em folder, nem em anúncio de portal. Se não coube a assinatura, a peça está errada — não o contrário.</span></div></div>
+        <div class="achado"><div class="k">02</div><div><b>A régua tracejada é exclusiva do endosso.</b><span>É o único lugar onde o tracejado aparece fora do símbolo. Isso faz o gesto virar reflexo: viu a linha do recife, é obra da Salt.</span></div></div>
+        <div class="achado"><div class="k">03</div><div><b>Área de proteção = o diâmetro do sol.</b><span>Um sol inteiro de respiro em volta do bloco. Nada entra — nem CRECI, nem selo de imobiliária, nem borda de foto.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">06</div>
+      <h2>Tipografia</h2>
+      <p class="sub">Fora a serifada pesada da versão anterior. Entra letra larga, clara e de traço fino — que acompanha o símbolo horizontal e o gosto que o logotipo do Taboa já demonstra.</p>
+    </div>
+    <div class="pilha">
+
+      <div class="bloco" style="gap:22px">
+        <div class="rot">Escolha do wordmark — quatro opções reais, para você apontar uma</div>
+        <div class="opcoes">
+          <div class="op rec">
+            <span class="tag">recomendada</span>
+            <div class="sm sm-jura">Salt</div>
+            <div class="cap"><b>Jura Light</b><span>Larga, aberta e calma. Tem peso Medium para placa e tamanho pequeno — a única das quatro que aguenta obra e papel com a mesma família.</span></div>
+          </div>
+          <div class="op">
+            <div class="sm sm-outfit">Salt</div>
+            <div class="cap"><b>Outfit</b><span>Geométrica e neutra. A mais segura e a mais legível de longe; em compensação, a menos memorável.</span></div>
+          </div>
+          <div class="op">
+            <div class="sm sm-poiret">Salt</div>
+            <div class="cap"><b>Poiret One</b><span>A mais elegante das quatro e a mais próxima do logotipo do Taboa. Fina demais para placa de obra e capacete.</span></div>
+          </div>
+          <div class="op">
+            <div class="sm sm-instr">Salt</div>
+            <div class="cap"><b>Instrument Serif</b><span>Se você quiser manter serifa: alto contraste, editorial, muito mais leve que a anterior.</span></div>
+          </div>
+        </div>
+        <p class="mini">O documento inteiro está montado em Jura. Se você apontar outra, eu troco e republico — muda só o wordmark e os títulos; símbolo, paleta e sistema ficam.</p>
+      </div>
+
+      <div class="espec">
+        <div class="t-d">Vinte e quatro casas. Uma praia com Bandeira Azul.</div>
+        <div class="meta"><span>Jura</span><span>Títulos e nome</span><span>Light no wordmark, Medium nos títulos</span><span>Entreletra do wordmark: 0,30em</span></div>
+      </div>
+      <div class="espec">
+        <div class="t-c">A casa fica a 40 metros da linha d'água. A mata continua atrás dela. Foi assim que a gente desenhou, e foi assim que a gente construiu.</div>
+        <div class="meta"><span>Work Sans</span><span>Corpo</span><span>Regular / Itálico / Semibold</span><span>Entrelinha 1,66</span></div>
+      </div>
+      <div class="espec">
+        <div class="t-m">24 CASAS &nbsp;·&nbsp; 3 E 4 SUÍTES &nbsp;·&nbsp; APA COSTA DOS CORAIS</div>
+        <div class="meta"><span>DM Mono</span><span>Dado</span><span>Metragem, cota, prazo, ficha técnica</span></div>
+      </div>
+
+      <p class="texto">Duas regras que seguram tudo: <strong>número nunca em serifada</strong> — metragem, distância até o mar, prazo, tudo em monoespaçada; e <strong>letra manuscrita não existe na marca</strong>. O post do Bandeira Azul refeito com essa tipografia sobre foto do recife tem dez vezes mais força que o card de marcador.</p>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">07</div>
+      <h2>Paleta</h2>
+      <p class="sub">Tirada dos materiais que aparecem nas fotos de obra pronta de vocês. Todo mundo na Rota Ecológica usa turquesa; é exatamente por isso que a marca não deve.</p>
+    </div>
+    <div class="pilha">
+      <div class="amostras">
+        <div class="am"><div class="chip" style="background:#E7E4DB"></div><div class="inf"><span class="nm">Cal</span><span class="hx">#E7E4DB</span><span class="us">Fundo padrão. O reboco claro das fachadas.</span></div></div>
+        <div class="am"><div class="chip" style="background:#1E4034"></div><div class="inf"><span class="nm">Mata</span><span class="hx">#1E4034</span><span class="us">Cor institucional. Verde fechado da mata atrás da praia.</span></div></div>
+        <div class="am"><div class="chip" style="background:#B99354"></div><div class="inf"><span class="nm">Palha</span><span class="hx">#B99354</span><span class="us">Apoio quente. A cobertura, o ripado, a madeira.</span></div></div>
+        <div class="am"><div class="chip" style="background:#E0A542"></div><div class="inf"><span class="nm">Sol</span><span class="hx">#E0A542</span><span class="us">Só no sol do símbolo, e só quando a peça pede calor. Nunca em texto.</span></div></div>
+        <div class="am"><div class="chip" style="background:#7FC5C0"></div><div class="inf"><span class="nm">Recife</span><span class="hx">#7FC5C0</span><span class="us">Modo escuro e detalhe. Nunca chapado numa peça inteira.</span></div></div>
+        <div class="am"><div class="chip" style="background:#181410"></div><div class="inf"><span class="nm">Piche</span><span class="hx">#181410</span><span class="us">Texto e peças escuras. Preto quente, nunca #000.</span></div></div>
+      </div>
+      <p class="texto">Proporção: <strong>65% Cal, 20% Piche, 10% Mata, 5% Palha.</strong> Sol e Recife entram em gotas. A água aparece na foto — não precisa aparecer também na marca, senão a peça inteira vira propaganda de resort.</p>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">08</div>
+      <h2>Ripado, foto e render</h2>
+      <p class="sub">O grafismo sai direto da arquitetura de vocês: o brise de madeira que está em quase toda casa do feed.</p>
+    </div>
+    <div class="pilha">
+      <div class="ripado" role="img" aria-label="Grafismo de ripado de madeira"></div>
+      <p class="mini">Ripado — barras de 4&nbsp;px a cada 17&nbsp;px, em Palha. Faixa de rodapé, fundo de citação e separador de carrossel. Nunca atrás de texto corrido.</p>
+
+      <div class="g2">
+        <div class="bloco">
+          <div class="rot" style="color:var(--acento)">Foto — sim</div>
+          <p style="font-size:15px">Obra pronta com gente morando. Luz de fim de tarde, sombra de coqueiro no reboco. Detalhe material em close: a amarração da palha, a junta da pedra, o topo do mourão, a veia da madeira — vocês já fazem isso, e é o melhor do perfil. Foto de obra em andamento, com fôrma e ferragem à mostra.</p>
+        </div>
+        <div class="bloco">
+          <div class="rot" style="color:#A6402D">Foto — não</div>
+          <p style="font-size:15px">Render como conteúdo principal. Céu turbinado e grama fluorescente. Drone girando ao pôr do sol. Casal de banco de imagem na espreguiçadeira. Texto escrito por cima da foto em letra de marcador. Filtro que deixa a água mais azul do que ela é — ela já é.</p>
+        </div>
+      </div>
+
+      <div class="destaque">
+        <div class="rot">Regra do render</div>
+        <p class="grande">Render entra marcado, e nunca sozinho.</p>
+        <p>Todo render leva a etiqueta <b>“imagem ilustrativa”</b> em DM Mono no canto e vem sempre em par com uma foto de obra real no mesmo carrossel. Duas razões: protege vocês juridicamente, e ensina o comprador que a Salt entrega o que desenha. Numa praça onde já teve gente vendendo planta e não entregando, isso é diferencial de venda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">09</div>
+      <h2>A grade</h2>
+      <p class="sub">Ritmo fixo em três trilhas, lido de cima para baixo. Qualquer pessoa da equipe mantém sem designer — que é a única forma de isso sobreviver ao terceiro mês.</p>
+    </div>
+    <div class="pilha">
+      <div class="grade">
+        <div class="tile t-obra"><span class="tl cl">obra pronta</span></div>
+        <div class="tile t-cal"><div class="frase vd">Pé na areia<br>é uma cota.</div><span class="tl es">frase</span></div>
+        <div class="tile t-mata"><span class="tl cl">textura</span></div>
+        <div class="tile t-mar">
+          <svg viewBox="0 0 128 108" width="60" height="51" aria-hidden="true">
+            <g fill="none" stroke="#E7E4DB">
+              <circle cx="64" cy="34" r="26" fill="#E7E4DB"/>
+              <path d="M4 70H124" stroke-width="8"/>
+              <path d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+              <path d="M4 100H124" stroke-width="3"/>
+            </g>
+          </svg>
+          <span class="tl cl">marca</span>
+        </div>
+        <div class="tile t-agua"><span class="tl es">recife</span></div>
+        <div class="tile t-cal"><div class="t-m es" style="font-size:10px;line-height:2">24 CASAS<br>3–4 SUÍTES<br>40 M DO MAR</div><span class="tl es">ficha</span></div>
+        <div class="tile t-pedra"><span class="tl cl">obra em andamento</span></div>
+        <div class="tile t-cal"><div class="frase es">A mata fica.<br>A casa se encaixa.</div><span class="tl es">frase</span></div>
+        <div class="tile t-obra"><span class="tl cl">detalhe material</span></div>
+      </div>
+      <p class="mini">Trilha 1 — obra (pronta e em andamento, alternando). Trilha 2 — palavra (frase curta ou ficha técnica, sempre em fundo Cal). Trilha 3 — matéria (textura, mata, recife, detalhe). O render não tem trilha própria: entra dentro da trilha 1, em carrossel, ao lado da foto real.</p>
+      <div class="bloco">
+        <div class="rot">Bio do perfil — proposta</div>
+        <p style="font-size:16.5px"><b>Salt · Construtora</b><br>Casas pé na areia na Rota Ecológica.<br>São Miguel dos Milagres · Patacho — AL<br>Taboa · Riviera Patacho<br>↓ Obras entregues</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">10</div>
+      <h2>Como a Salt fala</h2>
+      <p class="sub">Quem compra casa no Patacho já conhece a região, já se hospedou em pousada boa e detesta ser tratado como turista. O tom tem que reconhecer isso.</p>
+    </div>
+    <div class="pilha">
+      <div class="voz">
+        <div class="voz-c voz-sim">
+          <h4>Sim</h4>
+          <ul>
+            <li><b>Distância em metro.</b> “40 m da linha d'água” diz mais do que “pé na areia” escrito dez vezes.</li>
+            <li><b>Nomear o material.</b> Palha de piaçava, ripado de cumaru, pedra da região. Quem paga por isso quer saber o que é.</li>
+            <li><b>Falar da APA como escolha.</b> Recuo, vegetação mantida, efluente tratado. É o que separa vocês de quem só quer o terreno.</li>
+            <li><b>Frase curta.</b> Ponto final. O silêncio é o mesmo da praia às seis da tarde.</li>
+          </ul>
+        </div>
+        <div class="voz-c voz-nao">
+          <h4>Não</h4>
+          <ul>
+            <li><b>“Paraíso”, “refúgio”, “seu pedacinho do céu”.</b> É a legenda de todo mundo na Rota Ecológica.</li>
+            <li><b>Emoji de palmeira e onda.</b> Nem na bio.</li>
+            <li><b>Caixa-alta gritando “ÚLTIMAS UNIDADES”.</b> Escassez fabricada quebra o tom em um post.</li>
+            <li><b>Letra manuscrita sobre foto.</b> Enterrado na seção 06.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">11</div>
+      <h2>Aplicações</h2>
+      <p class="sub">Simulações com a paleta e as fontes reais. As fotos estão representadas por blocos de cor — entram no lugar assim que eu tiver os arquivos.</p>
+    </div>
+    <div class="pilha">
+
+      <div>
+        <div class="rot" style="margin-bottom:13px">Portaria / placa de obra — o endosso em campo</div>
+        <div class="portaria">
+          <div class="rip" aria-hidden="true"></div>
+          <div class="in">
+            <div class="proj">Riviera Patacho</div>
+            <div class="end">PRAIA DO PATACHO &middot; ROTA ECOLÓGICA &middot; AL</div>
+            <div class="assin">
+              <svg viewBox="0 0 128 108" width="52" height="44" aria-hidden="true">
+                <g fill="none" stroke="#E7E4DB">
+                  <circle cx="64" cy="34" r="26" fill="#E7E4DB"/>
+                  <path d="M4 70H124" stroke-width="8"/>
+                  <path d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+                  <path d="M4 100H124" stroke-width="3"/>
+                </g>
+              </svg>
+              <span class="por">construção e incorporação</span>
+              <span class="nm">Salt</span>
+            </div>
+          </div>
+        </div>
+        <p class="mini" style="margin-top:11px">Sem render na placa, sem “breve lançamento”. Concreto aparente, letras vazadas em chapa e o ripado como textura — os mesmos materiais da obra atrás dela.</p>
+      </div>
+
+      <div>
+        <div class="rot" style="margin-bottom:13px">Cartão — 85 × 55&nbsp;mm, papel algodão, símbolo em relevo seco</div>
+        <div class="g2">
+          <div class="cartao cf">
+            <svg viewBox="0 0 128 108" width="50" height="42" aria-hidden="true">
+              <g fill="none" stroke="#181410">
+                <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+                <path d="M4 70H124" stroke-width="8"/>
+                <path d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+                <path d="M4 100H124" stroke-width="3"/>
+              </g>
+            </svg>
+            <div>
+              <div class="cv-n">Nome do Sócio</div>
+              <div class="cv-c">Direção &middot; Salt</div>
+              <div class="cv-t" style="margin-top:9px">salt.com.br<br>+55 82 0000&ndash;0000</div>
+            </div>
+          </div>
+          <div class="cartao cv" style="justify-content:center; align-items:center; text-align:center; gap:10px">
+            <div style="font-family:var(--f-display); font-weight:300; text-transform:uppercase; font-size:26px; letter-spacing:.3em; text-indent:.3em">Salt</div>
+            <div class="cv-c" style="letter-spacing:.26em">Construtora</div>
+            <div class="cv-t">São Miguel dos Milagres &middot; Patacho<br>Escritório: Ponta Verde, Maceió</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="secao">
+    <div class="cabeca">
+      <div class="n">12</div>
+      <h2>Por onde começar</h2>
+      <p class="sub">Ordem escolhida pelo retorno: primeiro o que já está no ar todo dia, depois o que fica de pé por dez anos.</p>
+    </div>
+    <div class="pilha">
+      <div class="fases">
+        <div class="fase"><div class="q">Agora</div><div><h4>Apontar o wordmark e fechar a seção 02</h4><p>Uma fonte entre as quatro, e endosso ou marca única. São as duas coisas que travam o resto — a segunda depende de onde o Riviera Patacho está no funil de vendas, não de gosto.</p></div></div>
+        <div class="fase"><div class="q">Semana 1–2</div><div><h4>Marca e assinaturas fechadas</h4><p>Símbolo, wordmark, selo, bloco de endosso para Taboa e Riviera Patacho, arquivos em SVG, PDF e PNG, e um manual curto de 8 páginas que a equipe consiga usar sozinha.</p></div></div>
+        <div class="fase"><div class="q">Semana 3–5</div><div><h4>Perfil e banco de conteúdo</h4><p>Avatar, destaques, bio, capas e 15 posts na grade da seção 09 — incluindo o Bandeira Azul refeito. Sessão de fotos das casas prontas e dos detalhes materiais: é o ativo que está faltando e é barato de produzir.</p></div></div>
+        <div class="fase"><div class="q">Mês 2–3</div><div><h4>Campo e negócio</h4><p>Portaria, placa de obra, tapume, uniforme, apresentação de vendas, papelaria, e-mail e site de uma página com as obras entregues.</p></div></div>
+        <div class="fase"><div class="q">Mês 3</div><div><h4>Registrar</h4><p>Marca mista no INPI (classe 37 construção, classe 36 incorporação), domínio e padronização da grafia nos portais de imóveis — para nenhum outro “Salt” aparecer na frente de vocês.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <div class="lock">
+      <svg viewBox="0 0 128 108" width="62" height="52" aria-hidden="true">
+        <g class="m">
+          <circle cx="64" cy="34" r="26" stroke-width="5.5"/>
+          <path d="M4 70H124" stroke-width="8"/>
+          <path class="rec" d="M4 87H124" stroke-width="6.5" stroke-dasharray="12 10"/>
+          <path d="M4 100H124" stroke-width="3"/>
+        </g>
+      </svg>
+      <div class="lt"><div class="ln" style="font-size:26px">Salt</div><div class="ld">Linha d'Água &middot; v3</div></div>
+    </div>
+    <p>Proposta de identidade visual para discussão. Diagnóstico feito sobre prints do perfil @salt.cb enviados pelo cliente em ago/2026; dados cadastrais apurados em registros públicos. “Riviera Patacho” aparece parcialmente cortado no print e precisa ser confirmado.</p>
+  </footer>
+
+  <div class="fim"></div>
+</main>
