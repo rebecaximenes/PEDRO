@@ -46,6 +46,9 @@ def css_das_fontes() -> str:
 
 def montar_pagina(corpo_artifact: str) -> str:
     """Envolve a versão artifact num documento HTML completo."""
+    # o index.html usa o título longo, bom para busca; o artifact fica com o nome curto
+    corpo_artifact = corpo_artifact.replace(
+        "<title>Ocre &amp; Gris</title>", f"<title>{META['titulo']}</title>", 1)
     partes = corpo_artifact.split("</style>", 1)
     if len(partes) != 2:
         sys.exit("não achei o fim do bloco <style> em src.html")

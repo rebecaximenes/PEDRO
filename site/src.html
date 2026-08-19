@@ -1,4 +1,4 @@
-<title>Ocre &amp; Gris — Casas em São Miguel dos Milagres</title>
+<title>Ocre &amp; Gris</title>
 <style>
 /*FONTS*/
 
@@ -20,6 +20,8 @@
 }
 
 *{box-sizing:border-box}
+:focus-visible{outline:2px solid var(--mar); outline-offset:3px; border-radius:2px}
+.reserva :focus-visible,.citacao :focus-visible{outline-color:var(--concha)}
 html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:76px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0; background:var(--areia); color:var(--tinta);
@@ -206,11 +208,9 @@ button,input,select,textarea{font:inherit; color:inherit}
 .dois-blocos{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:clamp(26px,4.5vw,60px); margin-top:clamp(34px,5vw,56px)}
 @media (max-width:840px){.dois-blocos{grid-template-columns:1fr}}
-.lista-tracejada li{display:grid; grid-template-columns:26px 1fr; gap:14px; padding:13px 0;
-  border-bottom:1px dashed var(--tracejo); align-items:baseline}
+.lista-tracejada li{padding:14px 0; border-bottom:1px dashed var(--tracejo)}
 .lista-tracejada li:first-child{border-top:1px dashed var(--tracejo)}
-.lista-tracejada .k{font-family:var(--f-dado); font-size:11px; color:var(--fumo)}
-.lista-tracejada b{font-weight:600; font-size:16px}
+.lista-tracejada b{display:block; font-weight:600; font-size:16px; margin-bottom:2px}
 .lista-tracejada span{display:block; color:var(--fumo); font-size:14.5px; line-height:1.5}
 .comodidades{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:14px 18px}
 .comodidades li{display:flex; align-items:center; gap:11px; font-size:14.5px; line-height:1.4}
@@ -477,13 +477,13 @@ button,input,select,textarea{font:inherit; color:inherit}
         que valem a viagem.</p>
       </div>
       <ul class="lista-tracejada">
-        <li><span class="k">01</span><div><b>Casa inteira, só sua</b>
+        <li><div><b>Casa inteira, só sua</b>
           <span>Sem recepção, sem café coletivo, sem vizinho de parede. A casa fecha no portão
           e o dia começa na sua hora.</span></div></li>
-        <li><span class="k">02</span><div><b>Com serviço de casa</b>
+        <li><div><b>Com serviço de casa</b>
           <span>Camareira diária, enxoval de cama e banho, manutenção da piscina e um contato
           local no WhatsApp durante toda a estadia.</span></div></li>
-        <li><span class="k">03</span><div><b>No ritmo da Rota</b>
+        <li><div><b>No ritmo da Rota</b>
           <span>Bicicleta para a estrada de coqueiros, passeio de jangada na maré certa e
           reserva feita para você nos restaurantes que enchem em alta temporada.</span></div></li>
       </ul>
@@ -579,18 +579,18 @@ button,input,select,textarea{font:inherit; color:inherit}
       <div class="sobe">
         <h3 class="subtitulo" style="margin-bottom:20px">Os ambientes</h3>
         <ul class="lista-tracejada">
-          <li><span class="k">01</span><div><b>Varanda e piscina</b>
+          <li><div><b>Varanda e piscina</b>
             <span>Deck de madeira, duas redes, chuveirão e mesa de refeição ao ar livre.
             Churrasqueira na ponta, virada para o coqueiral.</span></div></li>
-          <li><span class="k">02</span><div><b>Sala e cozinha integradas</b>
+          <li><div><b>Sala e cozinha integradas</b>
             <span>Pé-direito alto, ventilação cruzada, ilha com seis banquetas e mesa de
             jantar para doze.</span></div></li>
-          <li><span class="k">03</span><div><b>Suíte máster</b>
+          <li><div><b>Suíte máster</b>
             <span>Cama king, closet, banheira e porta de correr direto para a piscina.</span></div></li>
-          <li><span class="k">04</span><div><b>Três suítes</b>
+          <li><div><b>Três suítes</b>
             <span>Duas com cama queen e uma com duas camas de solteiro — boa para as
             crianças ou para um casal extra.</span></div></li>
-          <li><span class="k">05</span><div><b>Apoio</b>
+          <li><div><b>Apoio</b>
             <span>Lavabo social, área de serviço com máquina de lavar e secar, depósito de
             pranchas e bicicletas.</span></div></li>
         </ul>
@@ -668,18 +668,18 @@ button,input,select,textarea{font:inherit; color:inherit}
       <div class="sobe">
         <h3 class="subtitulo" style="margin-bottom:20px">Os ambientes</h3>
         <ul class="lista-tracejada">
-          <li><span class="k">01</span><div><b>Pátio e piscina</b>
+          <li><div><b>Pátio e piscina</b>
             <span>Piscina encostada no muro de concreto, com sombra a partir das duas da
             tarde. Espreguiçadeiras, ducha e um pé de coqueiro no meio do deck.</span></div></li>
-          <li><span class="k">02</span><div><b>Sala de estar</b>
+          <li><div><b>Sala de estar</b>
             <span>Sofá largo, estante de livros, som e portas de correr que somem na parede
             quando o vento entra.</span></div></li>
-          <li><span class="k">03</span><div><b>Cozinha e jantar</b>
+          <li><div><b>Cozinha e jantar</b>
             <span>Bancada de concreto, fogão de cinco bocas, forno e mesa de madeira maciça
             para oito.</span></div></li>
-          <li><span class="k">04</span><div><b>Suíte máster</b>
+          <li><div><b>Suíte máster</b>
             <span>Cama king, banheiro com jardim interno e vista para o pátio.</span></div></li>
-          <li><span class="k">05</span><div><b>Duas suítes</b>
+          <li><div><b>Duas suítes</b>
             <span>Uma queen e uma com camas gêmeas, ambas com ar-condicionado e
             armário fechado.</span></div></li>
         </ul>
