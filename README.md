@@ -5,6 +5,15 @@ Proposta de nova identidade visual para a **Salt Construtora e Incorporadora**
 de Alagoas — São Miguel dos Milagres e Praia do Patacho.
 Instagram: [@salt.cb](https://www.instagram.com/salt.cb).
 
+## Outros projetos neste repositório
+
+- `site/` — **Ocre & Gris**, site de aluguel por temporada das duas casas em São Miguel
+  dos Milagres ([@casaocremilagres](https://www.instagram.com/casaocremilagres/) e
+  [@casagrismilagres](https://www.instagram.com/casagrismilagres/)).
+  Ver `site/README.md`.
+
+---
+
 ## Arquivos
 
 - `salt-identidade.html` — apresentação completa. Página única, autocontida
