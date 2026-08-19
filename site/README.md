@@ -37,24 +37,36 @@ No `src.html`, cada trecho a revisar está marcado com `<!-- CONFIRMAR -->`.
 - [ ] **Distâncias e tempos** citados em "A região" e "Como chegar".
 - [ ] **Domínio** — trocar `https://ocreegris.com.br/` no dicionário `META` do `build.py`.
 
-## Trocar os blocos de foto por fotos de verdade
+## As ilustrações, e como trocá-las por fotos
 
-Todo espaço reservado para imagem é uma `div.foto` com um desenho de marca-d'água:
+Cada espaço reservado para imagem traz hoje uma **cena ilustrada** — praia com a linha
+de recifes, piscinas naturais na maré baixa, jangada, mangue do Tatuamunha, estrada de
+coqueiros, mesa sob a palha, a casa vista do jardim, piscina com rede, sala e quarto.
+São dez desenhos vetoriais, feitos na paleta do site e embutidos no próprio arquivo.
+A etiqueta no alto de cada bloco diz "ilustração" justamente para não passar por foto.
+
+O bloco é sempre assim:
 
 ```html
-<div class="foto" data-tom="ocre" data-legenda="foto · piscina e varanda">
-  <svg class="marca-dagua" viewBox="0 0 120 90" style="color:#8A5F1C"><use href="#m-piscina"/></svg>
+<div class="foto" data-tom="ocre" data-legenda="ilustração · piscina e varanda">
+  <svg class="cena" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"
+       aria-hidden="true"><use href="#c-piscina"/></svg>
 </div>
 ```
 
-Para colocar a foto, basta acrescentar um `<img>` dentro da `div` — o CSS já cobre o bloco
-inteiro e esconde a legenda:
+Para pôr a foto de verdade, troque o `<svg>` por um `<img>` e ajuste a legenda — o CSS
+já cobre o bloco inteiro e apaga a etiqueta sozinho:
 
 ```html
-<div class="foto" data-tom="ocre" data-legenda="foto · piscina e varanda">
+<div class="foto" data-tom="ocre" data-legenda="piscina e varanda">
   <img src="fotos/ocre-piscina.jpg" alt="Piscina e varanda da Casa Ocre" loading="lazy">
 </div>
 ```
+
+As cenas disponíveis são `#c-praia`, `#c-piscinas`, `#c-jangada`, `#c-coqueiral`,
+`#c-rio`, `#c-mesa`, `#c-casa`, `#c-piscina`, `#c-interior` e `#c-quarto`. Todas são
+desenhadas em 400×300 com faixa segura entre y=50 e y=250: os blocos têm proporções
+diferentes e recortam topo e base, então só entra fundo fora dessa faixa.
 
 Se as fotos ficarem numa pasta `fotos/` ao lado do `index.html`, o site deixa de ser um
 arquivo só — é o único momento em que isso acontece. Recomendado: JPEG a 1600 px de
